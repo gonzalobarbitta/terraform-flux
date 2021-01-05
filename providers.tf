@@ -16,3 +16,9 @@ terraform {
     }
   }
 }
+
+provider "flux" {}
+
+provider "kubectl" {}
+
+provider "kubernetes" {}

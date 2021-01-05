@@ -1,3 +1,5 @@
+# flux_install data source generates a multi-doc YAML with Kubernetes manifests that can be used to install or upgrade Flux.
+
 # Generate manifests
 data "flux_install" "main" {
   target_path    = "production"
