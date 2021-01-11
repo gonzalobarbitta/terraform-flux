@@ -27,6 +27,6 @@ variable "gitlab_token" {
 }
 
 variable "gitlab_base_url" {
-  description = "The target GitLab base API endpoint."
+  description = "The target GitLab base endpoint."
   type        = string
 }
