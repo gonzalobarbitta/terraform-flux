@@ -10,7 +10,7 @@ data "flux_install" "main" {
 
 resource "kubernetes_namespace" "flux_system" {
   metadata {
-    name = "flux-system"
+    name = var.namespace
   }
 
   lifecycle {
