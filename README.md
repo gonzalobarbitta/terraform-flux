@@ -3,4 +3,4 @@ Uses Terraform provider for Flux v2 to install Flux on k8s and configure it to r
 
 For details on usage, please see the [chart readme](https://github.com/gonzalobarbitta/terraform-flux/tree/main/modules/flux).
 
-In this example, we are syncing cluster with one repository: https://github.com/gonzalobarbitta/httpbin
+This example syncs cluster with one repository: https://github.com/gonzalobarbitta/httpbin
