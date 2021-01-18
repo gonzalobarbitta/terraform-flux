@@ -25,7 +25,7 @@ resource "kubernetes_namespace" "main" {
 data "flux_sync" "main" {
   for_each    = local.repositories
   target_path = each.value.target_path
-  url         = "${var.gitlab_base_url}/${each.value.owner}/${each.value.name}"
+  url         = "https://github.com/${var.github_owner}/${each.value.name}"
   namespace   = each.value.namespace
   branch      = each.value.branch
 }
@@ -57,17 +57,16 @@ resource "kubernetes_secret" "main" {
 
   data = {
     username        = "git"
-    password        = var.gitlab_token
-    known_hosts     = var.known_hosts
+    password        = var.github_token
     identity        = tls_private_key.main.private_key_pem
     "identity.pub"  = tls_private_key.main.public_key_pem
   }
 }
 
-resource "gitlab_deploy_key" "main" {
-  for_each  = local.repositories
-  project   = each.value.id
-  title     = "Flux deploy key"
-  key       = tls_private_key.main.public_key_openssh
-  can_push  = true
+resource "github_repository_deploy_key" "main" {
+  for_each    = local.repositories
+  title       = "Flux deploy key"
+  repository  = each.value.name
+  key         = tls_private_key.main.public_key_openssh
+  read_only   = true
 }

@@ -3,7 +3,6 @@
 # Generate manifests
 data "flux_install" "main" {
   target_path    = "production"
-  arch           = "amd64"
   network_policy = false
   version        = "latest"
 }

@@ -1,20 +1,11 @@
 locals {
+  github_owner = "gonzalobarbitta"
   repositories    = [
     {
-      namespace   = "echo"
-      owner       = "gb43580"
-      name        = "echo-chart"
-      branch      = "master"
-      target_path = "releases"
-      id          = 407
-    },
-    {
       namespace   = "httpbin"
-      owner       = "gb43580"
-      name        = "httpbin-chart"
-      branch      = "master"
+      name        = "httpbin"
+      branch      = "main"
       target_path = "releases"
-      id          = 408
     }
   ]
 }
@@ -22,5 +13,6 @@ locals {
 module "flux" {
   source        = "./modules/flux"
   repositories  = local.repositories
-  gitlab_token  = var.gitlab_token
+  github_token  = var.github_token
+  github_owner  = local.github_owner
 }

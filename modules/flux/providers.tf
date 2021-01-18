@@ -2,8 +2,9 @@ terraform {
   required_version = ">= 0.13"
 
   required_providers {
-    gitlab = {
-      source = "gitlabhq/gitlab"
+    github = {
+      source  = "hashicorp/github"
+      version = ">= 4.1.0"
     }
     kubernetes = {
       source  = "hashicorp/kubernetes"
@@ -26,7 +27,7 @@ provider "kubectl" {}
 
 provider "kubernetes" {}
 
-provider "gitlab" {
-  token    = var.gitlab_token
-  base_url = "${var.gitlab_base_url}/api/v4/"
+provider "github" {
+  owner = var.github_owner
+  token = var.github_token
 }
